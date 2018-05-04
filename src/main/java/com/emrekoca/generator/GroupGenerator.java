@@ -8,12 +8,13 @@ package com.emrekoca.generator;
  * @param <T>
  *            type
  */
-public interface Generator<T> {
+public interface GroupGenerator<T> {
 
 	/**
-	 * Every time this method is invoked, the instance generates a different ID.
+	 * Every time this method is invoked, the instance generates a different ID by
+	 * key.
 	 * 
 	 * @return T
 	 */
-	T next();
+	T next(String key);
 }

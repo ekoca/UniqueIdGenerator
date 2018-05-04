@@ -15,7 +15,8 @@ public class RandomIdGenerator implements Generator<String> {
 	private LazyLoadingSecureRandom random = LazyLoadingSecureRandom.INSTANCE;
 
 	/**
-	 * Every time this method is invoked, the instance generates a different ID.
+	 * Every time this method is invoked, the instance generates a different ID. It
+	 * does not guarantee uniqueness of any short ID
 	 * 
 	 * @return T
 	 */
