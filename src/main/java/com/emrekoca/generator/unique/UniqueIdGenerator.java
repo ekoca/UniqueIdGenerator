@@ -27,13 +27,13 @@ public final class UniqueIdGenerator implements Generator<Long> {
 	 * Unsigned 16 bits integer value (0-262143) is required. It must be unique for
 	 * each node on the distributed system.
 	 */
-	private int uniqueNodeId;
+	private short uniqueNodeId;
 
 	/**
 	 * Base time for generating unique ID. Unit is in millisecond. Base time is set
 	 * to 2018-05-03T00:00:00Z by default.
 	 */
-	private final long baseTime = ZonedDateTime.of(2018, 5, 3, 0, 0, 0, 0, ZoneId.of("UTC")).toInstant().toEpochMilli();
+	private final long baseTime = ZonedDateTime.of(2018, 5, 2, 0, 0, 0, 0, ZoneId.of("UTC")).toInstant().toEpochMilli();
 
 	/**
 	 * This time indicates when the sequence ID was generated. This value will be
@@ -76,7 +76,7 @@ public final class UniqueIdGenerator implements Generator<Long> {
 			throw new RuntimeException("Sequence exhausted at " + this.sequence);
 		}
 
-		long id = (elapsed << 22) | (sequence << 16) | uniqueNodeId;
+		long id = (elapsed << 12) | (sequence << 16) | uniqueNodeId;
 		return id;
 	}
 

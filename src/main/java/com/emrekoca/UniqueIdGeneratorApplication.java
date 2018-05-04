@@ -15,6 +15,6 @@ public class UniqueIdGeneratorApplication {
 
 	@Bean
 	UniqueIdGenerator uniqueIdGenerator() {
-		return new UniqueIdGenerator((short) 123456);
+		return new UniqueIdGenerator((short) 1024);
 	}
 }
