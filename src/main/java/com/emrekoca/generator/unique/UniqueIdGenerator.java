@@ -13,10 +13,10 @@ import com.emrekoca.generator.Generator;
  * @author ekoca
  */
 public final class UniqueIdGenerator implements Generator<Long> {
-	public static final int NODE_SHIFT = 10;
-	public static final int SEQ_SHIFT = 12;
+	public static final int TIME_SHIFT = 22;
+	public static final int SEQ_SHIFT = 16;
 
-	public static final short MAX_SEQUENCE = 1024;
+	public static final short MAX_SEQUENCE = 63;
 
 	/**
 	 * Sequence ID.
@@ -33,7 +33,7 @@ public final class UniqueIdGenerator implements Generator<Long> {
 	 * Base time for generating unique ID. Unit is in millisecond. Base time is set
 	 * to 2018-05-03T00:00:00Z by default.
 	 */
-	private final long baseTime = ZonedDateTime.of(2018, 5, 2, 0, 0, 0, 0, ZoneId.of("UTC")).toInstant().toEpochMilli();
+	private final long baseTime = ZonedDateTime.of(2018, 5, 3, 0, 0, 0, 0, ZoneId.of("UTC")).toInstant().toEpochMilli();
 
 	/**
 	 * This time indicates when the sequence ID was generated. This value will be
@@ -76,13 +76,13 @@ public final class UniqueIdGenerator implements Generator<Long> {
 			throw new RuntimeException("Sequence exhausted at " + this.sequence);
 		}
 
-		long id = (elapsed << 12) | (sequence << 16) | uniqueNodeId;
+		long id = (elapsed << 22) | (sequence << 16) | uniqueNodeId;
 		return id;
 	}
 
 	/**
 	 * Generates sequence ID at a certain elapsed time. The maximum value of
-	 * generated sequence ID is expected to 1023. It reset the sequence at any time.
+	 * generated sequence ID is expected to 63. It reset the sequence at any time.
 	 *
 	 * @param elapsed
 	 *            Elapsed time from base time in milliseconds.
