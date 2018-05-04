@@ -2,6 +2,8 @@ package com.emrekoca.generator.incremental;
 
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.springframework.stereotype.Component;
+
 import com.emrekoca.generator.Generator;
 
 /**
@@ -9,6 +11,7 @@ import com.emrekoca.generator.Generator;
  * @author ekoca
  *
  */
+@Component
 public class IncrementalIdGenerator implements Generator<Long> {
 
 	private static final AtomicLong counter = new AtomicLong(1);

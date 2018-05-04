@@ -2,6 +2,8 @@ package com.emrekoca.generator.random;
 
 import java.util.Random;
 
+import org.springframework.stereotype.Component;
+
 import com.emrekoca.generator.Generator;
 
 /**
@@ -11,14 +13,15 @@ import com.emrekoca.generator.Generator;
  * @author ekoca
  *
  */
+@Component
 public class ShortIdGenerator implements Generator<String> {
 	// Base62 alphabet
 	private final static String ALPHABET = new String("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz");
 	private final static int ID_SIZE = 8;
 
 	/**
-	 * Every time this method is invoked, the instance generates a different ID. It
-	 * does not guarantee uniqueness of any short ID.
+	 * Every time this method is invoked, the instance generates a different fixed 8
+	 * character ID. It does not guarantee uniqueness of any short ID.
 	 * 
 	 * @return T
 	 */

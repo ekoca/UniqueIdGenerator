@@ -2,6 +2,8 @@ package com.emrekoca.generator.random;
 
 import java.math.BigInteger;
 
+import org.springframework.stereotype.Component;
+
 import com.emrekoca.generator.Generator;
 
 /**
@@ -10,6 +12,7 @@ import com.emrekoca.generator.Generator;
  * @author ekoca
  *
  */
+@Component
 public class RandomIdGenerator implements Generator<String> {
 
 	private LazyLoadingSecureRandom random = LazyLoadingSecureRandom.INSTANCE;
